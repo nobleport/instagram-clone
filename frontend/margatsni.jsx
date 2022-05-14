@@ -3,5 +3,5 @@ import ReactDOM from "react-dom";
 
 document.addEventListener("DOMContentLoaded", ()=>{
     const root = document.getElementById('root');
-    ReactDOM.render(<h1>UNDER CONSTRUCTION, COME BACK SOON</h1>, root)
+    ReactDOM.render(<img src={window.instagramLogo}/>, root)
 })
