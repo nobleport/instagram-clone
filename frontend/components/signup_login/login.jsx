@@ -48,7 +48,7 @@ class Login extends React.Component {
     return (
         <div className='login-box'>
             <h3>𝓂𝒶𝓇𝑔𝒶𝓉𝓈𝓃𝒾</h3>
-            <form className="Login Form">
+            <form className="login-form">
                 <input type="text" value={this.state.username} placeholder='Phone number, email or username' onChange={this.handleInput("username")}/>
                 <input type="password" value={this.state.password} placeholder='Password' onChange={this.handleInput("password")}/>
                 <button onClick={(e)=>this.handleSubmit(e)}>Log in</button>

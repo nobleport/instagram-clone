@@ -7,7 +7,7 @@ import Header from "./header/header_container";
 
 const App = () => {
   return (
-  <div>
+  <div className="main-div">
     
     <Switch>
       <Route path="/login" component={Login}/>
