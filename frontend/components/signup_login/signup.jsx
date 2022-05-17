@@ -46,17 +46,20 @@ class SignUp extends React.Component {
     render(){
         return (
             <div className='login-box'>
+                <img className="loginimage1" src={window.loginImage1} />
+                <img className="loginimage2" src={window.loginImage2} />
+                <img className="loginimage3" src={window.loginImage3} />
                 <h3>𝓂𝒶𝓇𝑔𝒶𝓉𝓈𝓃𝒾</h3>
                 <h5>Sign up to see photos and videos from your friends.</h5>
-                <form className="Signup Form">
+                <form className="login-form">
                     <input type="text" value={this.state.username} placeholder='Phone number, email or username' onChange={this.handleInput("username")}/>
                     <input type="password" value={this.state.password} placeholder='Password' onChange={this.handleInput("password")}/>
                     <button onClick={this.handleSubmit}>Sign Up</button>
                 </form>
                 {this.renderErrors()}
-                <p>Already have an account? <Link onClick={this.props.resetErrors} to="/login">Log In.</Link></p>
+                <p>Already have an account? <Link className="loginbutton" onClick={this.props.resetErrors} to="/login">Log In.</Link></p>
                 <div>or</div>
-                <p>Log in as a <button onClick={(e)=>this.demoLogin(e)}>Demo User</button></p>
+                <p>Log in as a <button className="loginbutton" onClick={(e)=>this.demoLogin(e)}>Demo User</button></p>
             </div>
         )
     }
