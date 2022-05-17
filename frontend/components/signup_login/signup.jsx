@@ -9,6 +9,8 @@ class SignUp extends React.Component {
             password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.renderErrors = this.renderErrors.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     handleInput(type){
@@ -23,15 +25,38 @@ class SignUp extends React.Component {
             .then(()=>this.props.history.push('/'), )
     }
 
+    renderErrors(){
+        if(this.props.errors.length === 0) {
+            return null
+        }else{
+            return(
+                <ul>{this.props.errors.map((error, i) =><li key={i}>{error}</li>)}</ul>
+            )
+        }
+    }
+
+    demoLogin(e){
+        console.log(this.props)
+        this.props.login({
+            username: 'john_boy223',
+            password: '123456'})
+                .then(()=>this.props.history.push('/'))
+    }
+
     render(){
         return (
-            <div className="Signup Form">
-                <form>
+            <div className='login-box'>
+                <h3>𝓂𝒶𝓇𝑔𝒶𝓉𝓈𝓃𝒾</h3>
+                <h5>Sign up to see photos and videos from your friends.</h5>
+                <form className="Signup Form">
                     <input type="text" value={this.state.username} placeholder='Phone number, email or username' onChange={this.handleInput("username")}/>
                     <input type="password" value={this.state.password} placeholder='Password' onChange={this.handleInput("password")}/>
                     <button onClick={this.handleSubmit}>Sign Up</button>
                 </form>
-                <p>Already have an account? <Link to="/login">Log In.</Link></p>
+                {this.renderErrors()}
+                <p>Already have an account? <Link onClick={this.props.resetErrors} to="/login">Log In.</Link></p>
+                <div>or</div>
+                <p>Log in as a <button onClick={(e)=>this.demoLogin(e)}>Demo User</button></p>
             </div>
         )
     }

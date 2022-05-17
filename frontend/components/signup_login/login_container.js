@@ -1,13 +1,14 @@
 import { connect } from "react-redux";
-import { login } from  "../../actions/session_actions";
+import { login, resetErrors } from  "../../actions/session_actions";
 import Login from "./login";
 
-// const mSTP = state => ({
-//     users: state.entities.users
-// })
+const mSTP = state => ({
+    errors: state.errors
+})
 
 const mDTP = (dispatch)=> ({
-    login: (formUser) => dispatch(login(formUser))
+    login: (formUser) => dispatch(login(formUser)),
+    resetErrors: ()=> dispatch(resetErrors())
 });
 
-export default connect(null, mDTP)(Login);
+export default connect(mSTP, mDTP)(Login);

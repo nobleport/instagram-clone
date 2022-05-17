@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
         login(@user)
         render :show
       else
-        render json: @user.errors.full_messages, status: 401
+        render json: ['Invalid Credentials'], status: 401
       end
     end
   
@@ -18,4 +18,5 @@ class Api::UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:password, :username)
     end
+    
   end
