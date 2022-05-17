@@ -7,9 +7,29 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <% if current_user %>
+      <script>
+        window.currentUser = {
+          "id": <%= current_user.id %>,
+          "username": "<%= current_user.username%>",
+        };
+      </script>
+    <%end%>
   </head>
 
   <body>
+    <script>
+      window.instagramLogo = "<%= image_url('instagram-logo.jpg')%>"
+    </script>
+    <script>
+      window.loginImage1 = "<%= image_url('loginImage1')%>"
+    </script>
+    <script>
+      window.loginImage2 = "<%= image_url('loginImage2')%>"
+    </script>
+    <script>
+      window.loginImage3 = "<%= image_url('loginImage3')%>"
+    </script>
     <%= yield %>
   </body>
 </html>
