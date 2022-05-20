@@ -18,3 +18,5 @@ export const signup = (user)=>{
       method: "DELETE"
     })
   }
+
+  

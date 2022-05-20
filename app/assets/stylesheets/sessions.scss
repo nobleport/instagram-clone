@@ -127,11 +127,22 @@ html {
 
 }
 
-.main-div {
+.splash-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
     margin-top: 15%;
+
+    button {
+        cursor: pointer;
+    }
 }
+
+.postedpix {
+    width: 200px;
+}
+
+
+//put splash page in it's own container with these settings

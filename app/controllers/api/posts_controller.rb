@@ -2,7 +2,8 @@ class Api::PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
-        if @post.create!
+        @post.author_id = current_user.id
+        if @post.save!
             render :show 
         else
             render json: @post.errors.full_messages, status: 401
@@ -14,7 +15,7 @@ class Api::PostsController < ApplicationController
     end
 
     def index
-        @posts = Post.all
+        @posts = Post.all.includes(:user)
         render :index
     end
 
@@ -26,6 +27,6 @@ class Api::PostsController < ApplicationController
     
     private 
     def post_params
-        params.require(:post).permit(:caption, :author_id)
+        params.require(:post).permit(:caption, :photo)
     end
 end

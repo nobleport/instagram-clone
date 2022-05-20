@@ -4,10 +4,13 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const RESET_ERRORS = 'RESET_ERRORS';
 import * as SessionApiUtil from '../util/session_api_util';
 
+
 const recieveCurrentUser = (user) => ({
   type: RECEIVE_CURRENT_USER,
   user
 });
+
+
 
 const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER

@@ -10,8 +10,10 @@ class Api::UsersController < ApplicationController
         render json: ['Invalid Credentials'], status: 401
       end
     end
-  
-    def destroy
+
+    def show
+      @user = User.find_by(id: params[:id])
+      render :show
     end
   
     private
