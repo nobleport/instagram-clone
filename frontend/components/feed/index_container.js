@@ -5,9 +5,8 @@ import { fetchUser } from "../../actions/user_actions";
 import Index from './index'
 
 const mSTP = state =>{
-    console.log(state)
     return {
-        posts: Object.values(state.entities.posts),
+        posts: Object.values(state.entities.posts).reverse(),
     }
 }
 

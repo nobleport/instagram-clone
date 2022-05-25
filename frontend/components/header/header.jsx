@@ -9,7 +9,6 @@ class Header extends React.Component {
     }
 
     signout(){
-        console.log(this.props)
         this.props.logout()
             .then(()=>this.props.history.push("/login"))
     }
@@ -21,15 +20,15 @@ class Header extends React.Component {
                     <Link className="instagram-logo" to="/">Margatsni</Link>
                 </div>
                 <div className="search-container">
-                    <img src={window.searchIcon} />
-                    <input defaultValue="Search" type="text" />
+                    <img className="search-icon" src={window.searchIcon} />
+                    <input className="search-bar"placeholder="        Search" type="text" />
                 </div>
                 <ul className='header-list'>
                     <li>
-                        <img src={window.homeIcon} />
+                        <Link to="/"><img src={window.homeIcon} /></Link>
                     </li>
                     <li>
-                        <img src={window.messageIcon} />
+                        <img onClick={()=>this.props.openModal('form-modal')} src={window.newPostIcon} />
                     </li>
                     <li>
                         <img src={window.heartIcon} />
@@ -40,7 +39,6 @@ class Header extends React.Component {
                     <li>
                         <button onClick={this.signout}>Log Out</button>
                     </li>
-
                 </ul>
             </div>
         )

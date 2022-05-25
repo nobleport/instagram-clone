@@ -36,7 +36,6 @@ class SignUp extends React.Component {
     }
 
     demoLogin(e){
-        console.log(this.props)
         this.props.login({
             username: 'john_boy223',
             password: '123456'})

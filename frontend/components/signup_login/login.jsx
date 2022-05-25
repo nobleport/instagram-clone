@@ -36,7 +36,6 @@ class Login extends React.Component {
         }
 
     demoLogin(e){
-        console.log(this.props)
         this.props.login({
             username: 'john_boy223',
             password: '123456'})
@@ -44,7 +43,6 @@ class Login extends React.Component {
     }
         
     render(){
-    console.log(this.props);
     return (
         <div className='splash-container'>
             <div className='login-box'>

@@ -7,11 +7,11 @@ const postsReducer = (oldState={}, action) => {
     
     switch (action.type) {
         case RECEIVE_POSTS:
-            return action.posts; 
+            return action.payload.posts; 
         case RECEIVE_USER:
             return Object.assign({}, action.payload.posts)
         case RECEIVE_POST:
-            return Object.assign(newState, {[action.post.id]:action.post})
+            return Object.assign(newState, {[action.payload.post.id]:action.payload.post})
         default:
             return oldState;
     }

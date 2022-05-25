@@ -7,6 +7,7 @@ json.set! "posts" do
         json.set! post.id do
             json.extract! post, :id, :caption
             json.authorId user.id
+            json.authorName user.username
             if post.photo.attached?
                 json.photoUrl url_for(post.photo)
             else

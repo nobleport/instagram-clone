@@ -1,0 +1,17 @@
+.modal-background {
+    position: fixed;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(110, 109, 109, 0.625);
+
+    .modal-child {
+    position: relative;
+    height: 90vh;
+    width: 80vw;
+    background-color: white;
+    }
+}

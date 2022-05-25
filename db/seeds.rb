@@ -10,8 +10,10 @@ require 'open-uri'
 
 User.delete_all
 Post.delete_all
+Comment.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('posts')
+ActiveRecord::Base.connection.reset_pk_sequence!('comments')
 
 demo_user = User.create!(username: "john_boy223", password: "123456") #1
 user1 = User.create!(username: "JusticarKayle", password: "123456") #2
@@ -120,3 +122,10 @@ post4 = Post.create!(caption:"When I looked into my mothers eyes I saw a paradis
 post24 = Post.create!(caption:"Courage Is Finding The Will To Overcome Your Fear, Nothing More.", author_id:6)
 
     post24.photo.attach(io: open("https://s3.amazonaws.com/margatsni-seeds/vikings24.jpg"), filename:"vikings24.jpg")
+
+#postId 23
+
+comment1 = Comment.create!(body: "I love this post! Thanks for sharing...", post_id: 23, username: 'john_boy223')
+comment2 = Comment.create!(body: "Where did you take this pic??", post_id: 23, username: 'john_boy223')
+comment3 = Comment.create!(body: "Couldn't agree more", post_id: 23, username: 'john_boy223')
+comment4 = Comment.create!(body: "What is the significance of ravens in your posts?", post_id: 23, username: 'john_boy223')

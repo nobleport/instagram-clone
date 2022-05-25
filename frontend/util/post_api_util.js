@@ -1,22 +1,24 @@
-export const receivePosts = ()=>{
+export const fetchPosts = ()=>{
     return $.ajax({
         url: "/api/posts",
         method: "GET"
     })
 }
 
-export const receivePost = (postId)=> {
+export const fetchPost = (postId)=> {
     return $.ajax({
         url: `/api/posts/${postId}`,
         method: "GET"
     })
 }
 
-export const createPost = (post)=> {
+export const createPost = (formData)=> {
     return $.ajax({
         url: "/api/posts",
         method: "POST",
-        data: {post: post}
+        data: formData,
+        contentType: false,
+        processData: false
     })
 }
 

@@ -16,18 +16,25 @@ class Index extends React.Component {
     render(){
         const { posts, deletePost, fetchUser } = this.props
         return (
-            <div className="header">
-                <Header />
-                <ul className="posts-container">
-                    {
-                        posts.map(post => (
-                            <PostIndexItem
-                                post={post}
-                                key = {post.id}
-                            />
-                        ))
-                    }
-                </ul>
+            <div>
+                <div className="header-holder">
+                    <Header />
+                </div>
+                <div className="header">
+                    <ul className="posts-container">
+                        {
+                            posts.map(post => (
+                                <PostIndexItem
+                                    post={post}
+                                    key = {post.id}
+                                />
+                            ))
+                        }
+                    </ul>
+                    <ul className="suggestions-container">
+
+                    </ul>
+                </div>
             </div>
         )
     }
