@@ -11,7 +11,8 @@ const mSTP = (state, ownProps) =>{
         users: state.entities.users,
         post: ownProps.post,
         currentUser: state.session.currentUser,
-        comments: state.entities.comments
+        comments: state.entities.comments,
+        allLikes: state.entities.likes
     }
 }
 

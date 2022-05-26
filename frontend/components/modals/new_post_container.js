@@ -4,6 +4,7 @@ import NewPost from "./new_post"
 import { createPost } from "../../actions/post_actions";
 
 const mSTP = state => ({
+    currentUser: state.session.currentUser
 })
 
 const mDTP = dispatch => ({

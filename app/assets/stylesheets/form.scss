@@ -1,0 +1,157 @@
+.modal-child-form{
+    position: relative;
+    height: 77vh;
+    width: 59vw;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.form-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.form-header{
+    width: 100%;
+    height: 7%;
+    border-bottom: 1px solid #d5d1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-form-section{
+    width: 100%;
+    height: 93%;
+    display: flex;
+}
+
+.form-image-container{
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #d5d1d1;
+    
+}
+
+.right-side-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 10px;
+    align-items: center;
+
+    img{
+        width: 20px;
+        padding-right: 20px;
+        padding-left: 11px;
+    }
+}
+
+.new-post-form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.name-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+    height: 100%;
+    width: 35%;
+}
+
+.username-in-form{
+    width: 100%;
+    height: 20%;
+}
+
+.actual-form-container{
+    height: 93%;
+    padding-top: 20px;
+    padding-left: 15px;
+}
+
+.name-and-pic-form{
+    font-weight: 550;
+}
+
+.form-image{
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 2;
+}
+
+.form-text-input{
+    border: none;
+    font-size: 16px;
+    height: 48%;
+    outline: none;
+    line-height: 26px;
+}
+
+.form-file-input{
+    color: transparent;
+    display: block;
+    position: absolute;
+    right: 35%;
+    top: 7%;
+    height: 92.7%;
+    width: 64.8%;
+
+    
+}
+
+// .form-file-input:hover{
+//     background-color: #0095f68c;        
+// }
+
+.drag-drop-button{
+    width: 100%;
+    height: 100%;
+}
+
+.form-share-button{
+    width: 29%;
+    bottom: 25%;
+    margin-left: 32%;
+    height: 5%;
+    font-size: 19px;
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.disabled-form-share-button{
+    width: 29%;
+    bottom: 25%;
+    margin-left: 32%;
+    height: 5%;
+    font-size: 19px;
+    background-color: #0095f68c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.cover-up{
+    position: absolute;
+    width: 16.4%;
+    background-color: white;
+    height: 4%;
+    top: 7%;
+    left: 0;
+    z-index: 1;
+    border-top: 1px solid #d5d1d1;
+}

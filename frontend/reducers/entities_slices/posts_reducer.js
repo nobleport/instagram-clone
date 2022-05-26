@@ -1,6 +1,6 @@
-import {RECEIVE_POSTS, RECEIVE_POST, REMOVE_POST} from "../../actions/post_actions";
-import { RECEIVE_USER } from "../../actions/user_actions"
-
+import {RECEIVE_POSTS, RECEIVE_POST, REMOVE_POST, RECEIVE_LIKE, REMOVE_LIKE} from "../../actions/post_actions";
+import { RECEIVE_USER } from "../../actions/user_actions";
+import { RECEIVE_COMMENT } from '../../actions/comment_actions';
 const postsReducer = (oldState={}, action) => {
     Object.freeze(oldState);
     let newState = Object.assign({}, oldState);
@@ -12,6 +12,21 @@ const postsReducer = (oldState={}, action) => {
             return Object.assign({}, action.payload.posts)
         case RECEIVE_POST:
             return Object.assign(newState, {[action.payload.post.id]:action.payload.post})
+        case REMOVE_LIKE:
+            if (action.like.post_id){
+                for (let i = 0; i < newState[action.like.post_id].likeIds.length; i++) {
+                    if (newState[action.like.post_id].likeIds[i] === action.like.id){
+                        newState[action.like.post_id].likeIds.splice(i, 1); 
+                    }
+                }
+            }
+            return newState;
+        case RECEIVE_LIKE:
+            newState[action.like.post_id].likeIds.push(action.like.id);
+            return newState;
+        case RECEIVE_COMMENT:
+            debugger
+            newState[action.comment.comment.post_id].commentIds.push(action.comment.comment.id);
         default:
             return oldState;
     }

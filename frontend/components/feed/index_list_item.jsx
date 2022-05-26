@@ -22,27 +22,22 @@ class PostIndexItem extends React.Component{
             this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
         }
     }
-    
+
     componentDidMount(){
         this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
     }
 
     showButton(){
-        const {currentUser} = this.props
-        let likeStatus;
+        const {currentUser, allLikes} = this.props
+        // const { likeIds } = this.props.post
+        let likeStatus = false;
         let likeId;
-        if(this.props.post.likes){
-            Object.values(this.props.post.likes).forEach((like)=>{
-                if (like.username === currentUser.username){
-                    likeStatus = true;
-                    likeId = like.id;
-                }else{
-                    likeStatus = false;
-                }
-            })
-        }else{
-            likeStatus = false;
-        }
+        this.props.post.likeIds.forEach((id)=>{
+            if ((allLikes[id]).username === currentUser.username){
+                likeStatus = true
+                likeId = id
+            }
+        })
         if (likeStatus){
             return <button className="filled-heart post-heart" onClick={()=>this.handleDislike(likeId)}><AiFillHeart size={30}/></button>
         }else{
@@ -52,7 +47,7 @@ class PostIndexItem extends React.Component{
 
     showCommentButton(){
         if(this.state.body === ''){
-            return <button className="disabled-comment-button">Post</button>
+            return <button disabled="disabled"  className="disabled-comment-button">Post</button>
         }else{
             return <button className="comment-post-button" onClick={this.handleSubmit}>Post</button>
         }
@@ -81,8 +76,8 @@ class PostIndexItem extends React.Component{
         if ((this.props.post.commentIds).length > 0){
             let commentIdArr = this.props.post.commentIds;
             let finalCommentId = commentIdArr[commentIdArr.length - 1];
-            let finalComment = this.props.comments[finalCommentId];
-            console.log(finalComment)
+            // let finalComment = this.props.comments[finalCommentId];
+            // console.log(finalComment)
             // return <li className="last-comment">{finalCommentText}</li>
             return (
                 <li className="username index-username">
@@ -113,9 +108,9 @@ class PostIndexItem extends React.Component{
                         <li className="num-likes">totalLikes</li>
                         <li className="username index-username">{this.props.post.authorName}<span className="index-caption-body">{this.props.post.caption}</span></li>
                         <li className="view-comments-link-li">
-                            <Link className="view-comments-link"
+                            <button className="view-comments-link"
                                onClick={()=>this.props.openModal('show-modal', this.props.post.id)}>View all comments
-                            </Link>
+                            </button>
                         </li>
                         {this.renderFinalComment()}
                         {/* <li className="hours-ago">time since post</li> */}

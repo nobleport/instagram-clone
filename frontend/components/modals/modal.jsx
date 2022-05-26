@@ -15,19 +15,17 @@ class Modal extends React.Component{
         let component;
         switch (this.props.modal) {
             case ('show-modal'):
-                component = <ShowPost post={this.props.post}/>;
+                component = <div className="modal-child" onClick={e=> e.stopPropagation()}><ShowPost post={this.props.post}/></div>
                 break;
             case 'form-modal':
-                component = <NewPost/>;
+                component = <div className="modal-child-form" onClick={e=> e.stopPropagation()}><NewPost/></div>;
                 break;
             default:
                 return null;
         }
         return (
             <div className="modal-background" onClick={this.props.closeModal}>
-                <div className="modal-child" onClick={e=> e.stopPropagation()}>
-                    {component}
-                </div>
+                {component}
             </div>
         )
     }

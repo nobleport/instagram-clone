@@ -4,15 +4,22 @@ class Api::LikesController < ApplicationController
         @like.user_id = current_user.id
         @like.username = current_user.username
         @like.save!
-        @post = @like.post
-        render '/api/posts/show'
+        render json: @like
+        # if likes_params[:comment_id]
+        #     @comment = @like.comment
+        #     render '/api/comments/show'
+        # else
+        #     @post = @like.post
+        #     render '/api/posts/show'
+        # end
     end
 
     def destroy
         @like = Like.find_by(id: params[:id])
         @like.destroy!
-        @post = @like.post
-        render '/api/posts/show'
+        render json: @like
+        # @post = @like.post
+        # render '/api/posts/show'
     end
     
     private
