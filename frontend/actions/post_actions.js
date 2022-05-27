@@ -51,8 +51,8 @@ export const fetchPost = (postId) => dispatch => (
         .then((payload)=>dispatch(receivePost(payload)))
 )
 
-export const updatePost = (post) => dispatch => (
-    PostApiUtil.updatePost(post)
+export const updatePost = (post, postId) => dispatch => (
+    PostApiUtil.updatePost(post, postId)
         .then((payload)=>dispatch(receivePost(payload)))
 )
 

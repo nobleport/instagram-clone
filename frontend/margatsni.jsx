@@ -17,6 +17,18 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
     const store = configureStore(preloadedState);
     ReactDOM.render(<Root store ={store}/>, root)
+    document.addEventListener("click", function(event){
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+                }
+            } 
+        }
+    })
     window.store = store;
     window.getState = store.getState;
     window.dispatch = store.dispatch;

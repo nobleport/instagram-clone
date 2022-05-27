@@ -3,3 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.comment-like-count{
+    position: absolute;
+    top: 98%;
+    left: 18%;
+    color: #adacac;
+    font-size: 14px;
+    font-weight: 550;
+}
+
+.comment-profile-pic-username{
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+#comment-in-show{
+    display: flex;
+    position: relative;
+    padding-top: 16px;
+}
+
+.comment-heart{
+ padding-top: none;
+}

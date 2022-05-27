@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
     validates :body, presence: true
+    validates :user_id, presence: true
 
     belongs_to :post,
         foreign_key: :post_id,
@@ -13,5 +14,4 @@ class Comment < ApplicationRecord
     def created_at
         attributes['created_at'].strftime("%m/%d/%Y %H:%M")
     end
-    
 end

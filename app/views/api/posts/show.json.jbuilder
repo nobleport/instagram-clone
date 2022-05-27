@@ -8,6 +8,7 @@ json.comments do
             json.extract! comment, :id, :body, :post_id, :username
             json.likeIds comment.like_ids
             json.numLikes comment.like_ids.length
+            json.userId comment.user_id
         end
     end
 end

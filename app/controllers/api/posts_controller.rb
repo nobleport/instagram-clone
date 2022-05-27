@@ -12,6 +12,9 @@ class Api::PostsController < ApplicationController
 
     def destroy
         @post = Post.find(params[:id])
+        if @post
+            @post.destroy
+        end
     end
 
     def index
@@ -22,6 +25,17 @@ class Api::PostsController < ApplicationController
     def show
         @post = Post.find_by(id: params[:id])
         render :show
+    end
+
+    def update
+        @post = Post.find_by(id: params[:id])
+        if post_params[:photo]
+            @post.update(caption: post_params[:caption], photo: post_params[:photo])
+            render :show
+        else 
+            @post.update(caption: post_params[:caption])
+            render :show
+        end
     end
 
     

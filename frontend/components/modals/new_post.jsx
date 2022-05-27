@@ -13,6 +13,7 @@ class NewPost extends React.Component{
         this.preview = this.preview.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.generateSubmitButton = this.generateSubmitButton.bind(this)
+        console.log('hello')
     }
 
     handleInput(e){ 
@@ -22,9 +23,9 @@ class NewPost extends React.Component{
     handleFile(e){
         const reader = new FileReader();
         const file = e.currentTarget.files[0];
+        console.log(file);
         reader.onloadend = () =>
             this.setState({ imageUrl: reader.result, imageFile: file });
-
         if (file) {
         reader.readAsDataURL(file);
         } else {
@@ -71,8 +72,6 @@ class NewPost extends React.Component{
                             <img src={window.profileIcon}/> 
                             <div className="name-and-pic-form"><span className="username-in-form">{this.props.currentUser.username}</span></div>
                         </div>
-                        
-                        
                         <div className="actual-form-container">
                             <form className="new-post-form" onSubmit={(e)=>this.handleSubmit(e)}>
                                 <textarea className="form-text-input" type="text" placeholder="Write a caption..." onChange={this.handleInput}/>

@@ -1,5 +1,6 @@
 json.extract! comment, :id, :username, :body, :post_id
 json.likeIds comment.like_ids
+json.userId comment.user_id
 # json.numLikes comment.like_ids.length
 
 

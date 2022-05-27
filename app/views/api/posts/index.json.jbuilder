@@ -13,6 +13,7 @@ json.comments do
             json.set! comment.id do
                 json.extract! comment, :id, :body, :post_id, :username
                 json.likeIds comment.like_ids
+                json.userId comment.user_id
             end
         end
     end

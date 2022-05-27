@@ -31,9 +31,9 @@ class Index extends React.Component {
                             ))
                         }
                     </ul>
-                    <ul className="suggestions-container">
+                    {/* <ul className="suggestions-container">
 
-                    </ul>
+                    </ul> */}
                 </div>
             </div>
         )

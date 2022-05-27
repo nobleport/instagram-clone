@@ -13,6 +13,10 @@ class CommentIndex extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount(){
+        this.props.fetchPost(this.props.post.id)
+    }
+
     showButton(){
         if(this.state.body === ''){
             return <button className="disabled-comment-button">Post</button>

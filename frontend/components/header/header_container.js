@@ -4,6 +4,7 @@ import { logout } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
 
 const mSTP = state => ({
+    currentUser: state.session.currentUser
 })
 
 const mDTP = (dispatch)=> ({
@@ -11,4 +12,4 @@ const mDTP = (dispatch)=> ({
     openModal: (modal) => dispatch(openModal(modal))
 });
 
-export default connect(null, mDTP)(Header);
+export default connect(mSTP, mDTP)(Header);

@@ -1,13 +1,14 @@
 import React from "react";
 import ShowPost from "./show_post_container";
-import NewPost from "./new_post_container"
+import NewPost from "./new_post_container";
+import EditPost from './edit_post_container';
 
 class Modal extends React.Component{
     constructor(props){
         super(props)
         
     }
-
+    
     render(){
         if (!this.props.modal){
             return null
@@ -17,8 +18,11 @@ class Modal extends React.Component{
             case ('show-modal'):
                 component = <div className="modal-child" onClick={e=> e.stopPropagation()}><ShowPost post={this.props.post}/></div>
                 break;
-            case 'form-modal':
-                component = <div className="modal-child-form" onClick={e=> e.stopPropagation()}><NewPost/></div>;
+                case 'form-modal':
+                    component = <div className="modal-child-form" onClick={e=> e.stopPropagation()}><NewPost/></div>;
+                    break;
+                    case 'edit-modal':
+                component = <div className="modal-child-form" onClick={e=>e.stopPropagation()}><EditPost post={this.props.post}/></div>
                 break;
             default:
                 return null;

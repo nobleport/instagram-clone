@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
-import { BiSmile } from 'react-icons/bi'
+import { BiSmile } from 'react-icons/bi';
+import { AiOutlineEdit } from 'react-icons/ai';
 
 class PostIndexItem extends React.Component{
     constructor(props) {
@@ -15,10 +16,13 @@ class PostIndexItem extends React.Component{
         this.showButton = this.showButton.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderFinalComment = this.renderFinalComment.bind(this);
+        this.toggleEditButton = this.toggleEditButton.bind(this);
     }
 
     componentDidUpdate(prevProps){
+        console.log('who am I?')
         if (prevProps.post.commentIds.length != this.props.post.commentIds.length){
+            console.log("am I here?")
             this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
         }
     }
@@ -81,7 +85,7 @@ class PostIndexItem extends React.Component{
             // return <li className="last-comment">{finalCommentText}</li>
             return (
                 <li className="username index-username">
-                    {this.state.lastComment.username}
+                    <Link className="final-comment-username" to={`/users/${this.state.lastComment.userId}`}>{this.state.lastComment.username}</Link>
                     <span className="index-caption-body">
                         {this.state.lastComment.body}
                     </span>
@@ -92,12 +96,21 @@ class PostIndexItem extends React.Component{
         }
     }
 
-    render(){   
+    toggleEditButton(){
+        if(this.props.currentUser.id === this.props.post.authorId){
+            return <AiOutlineEdit onClick={()=>this.props.openModal('edit-modal', this.props.post.id)} className="edit-button"/>;
+        }else{
+            return null
+        }
+    }
+
+    render(){
         return(
             <li className="post-container">
                 <div className="post-header">
                     <img className="profile-pic-icon" src={window.profileIcon} />
                     <Link className="username index-username-top" to={`/users/${this.props.post.authorId}`}>{this.props.post.authorName}</Link>
+                    {this.toggleEditButton()}
                 </div>
                 <img className="postedpix" src={this.props.post.photoUrl}/>
                 <div className="bottom-section">
@@ -105,8 +118,9 @@ class PostIndexItem extends React.Component{
                         <div>{this.showButton()}</div>
                     </div>
                     <ul className="index-caption">
-                        <li className="num-likes">totalLikes</li>
-                        <li className="username index-username">{this.props.post.authorName}<span className="index-caption-body">{this.props.post.caption}</span></li>
+                        <li className="num-likes">{this.props.post.likeIds.length} likes</li>
+                        
+                        <li className="username index-username"><Link className="username-index-name" to={`/users/${this.props.post.authorId}`}>{this.props.post.authorName}</Link><span className="index-caption-body">{this.props.post.caption}</span></li>
                         <li className="view-comments-link-li">
                             <button className="view-comments-link"
                                onClick={()=>this.props.openModal('show-modal', this.props.post.id)}>View all comments

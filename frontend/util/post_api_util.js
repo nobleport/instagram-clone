@@ -22,10 +22,13 @@ export const createPost = (formData)=> {
     })
 }
 
-export const updatePost = (post) => {
+export const updatePost = (formData, postId) => {
     return $.ajax({
-        url: `/api/posts/${post.id}/edit`,
-        method: "GET"
+        url: `/api/posts/${postId}`,
+        method: "PATCH",
+        data: formData,
+        contentType: false,
+        processData: false
     })
 }
 

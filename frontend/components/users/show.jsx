@@ -15,7 +15,7 @@ class Show extends React.Component {
         if (!this.props.user) return null;
         const {username} = this.props.user
         return (
-            <div>
+            <div className="profile-page-show">
                 <div className="header-holder">
                     <Header/>
                 </div>
@@ -26,8 +26,7 @@ class Show extends React.Component {
                             <div className="show-info-container">
                                 <ul className="show-name">
                                     <li>{username}</li>
-                                    <li key={1}>Message</li>
-                                    <li key={2}><img className="following-icon" src={window.following}/></li>
+                                    {/* <li key={2}><img className="following-icon" src={window.following}/></li> */}
                                 </ul>
                                 <ul className="show-following">
                                     <li key={1}>{(Object.values(this.props.posts)).length} posts</li>

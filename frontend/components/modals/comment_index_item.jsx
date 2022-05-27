@@ -29,9 +29,9 @@ class CommentIndexItem extends React.Component {
             } 
         })
         if (likeStatus){
-            return <button className="filled-heart post-heart" onClick={()=>this.handleDislike(likeId)}><AiFillHeart size={30}/></button>
+            return <button className="filled-heart post-heart comment-heart" onClick={()=>this.handleDislike(likeId)}><AiFillHeart size={16}/></button>
         }else{
-            return <button className="hollow-heart post-heart" onClick={this.handleLike}><AiOutlineHeart size={30}/></button>
+            return <button className="hollow-heart post-heart comment-heart" onClick={this.handleLike}><AiOutlineHeart size={16}/></button>
         }
     }
 
@@ -46,16 +46,18 @@ class CommentIndexItem extends React.Component {
     render(){
         const {comment} = this.props
         return (
-            <ul className="comment">
-                <li><img src={window.profileIcon}/></li>
-                <li className="username">{comment.username}<span className="comment-body">{comment.body}</span></li>
-                <li>
+            <div id="comment-in-show" className="comment">
+                <div className='profile-pic-username comment-profile-pic-username'>
+                    <img src={window.profileIcon}/>
+                    <div className="username">{comment.username}<span className="comment-body">{comment.body}</span></div>
+                    <div className='comment-like-count'>{comment.likeIds.length} likes</div>
+                </div>
+                <div>
                     <div className="heart-container">
                         <div>{this.showHeartButton()}</div>
-                        <div>{comment.likeIds.length}</div>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         )
     }
 }
