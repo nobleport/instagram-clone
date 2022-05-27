@@ -78,7 +78,7 @@ class EditPost extends React.Component{
                         </div>
                         
                         
-                        <div className="actual-form-container">
+                        <div className="actual-form-container edit-form-container-1">
                             <form className="new-post-form" onSubmit={(e)=>this.handleSubmit(e)}>
                                 <textarea className="form-text-input" type="text" placeholder="Write a caption..." value={this.state.caption} onChange={this.handleInput}/>
                                 <label className="form-file-input">
@@ -86,7 +86,7 @@ class EditPost extends React.Component{
                                 </label>
                                 {this.generateSubmitButton()}
                             </form>
-                                <button onClick={this.handleDelete}>Delete post</button>
+                                <button className="delete-post form-share-button" onClick={this.handleDelete}>Delete post</button>
                         </div>
                     </div>
                 </div>

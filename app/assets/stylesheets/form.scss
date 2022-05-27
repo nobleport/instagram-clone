@@ -159,3 +159,16 @@
 .open-new-post-button {
     cursor: pointer;
 }
+
+.edit-form-container-1{
+    // position: relative;
+}
+
+.delete-post{
+    position: absolute;
+    bottom: 34%;
+    right: 13%;
+    margin-left: 0%;
+    width: 10%;
+    background-color: red;
+}
