@@ -11,3 +11,10 @@ export const fetchUsers = ()=>{
     method: "GET"
   })
 }
+
+export const fetchResults = (query)=> {
+  return $.ajax({
+    url: `/api/users/search/${query}`,
+    method: 'GET'
+  })
+}

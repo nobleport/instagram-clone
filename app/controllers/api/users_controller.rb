@@ -17,8 +17,21 @@ class Api::UsersController < ApplicationController
     end
 
     def index
-      @users = User.all
-      render :index
+      if params[:query] 
+        @users = User.where("username LIKE ?", "% " + "%" + params[:query] + "%" + " %")
+          .or(User.where("username LIKE ?", "%" + params[:query] + "%"))
+          .or(User.where("username LIKE ?", "%" + params[:query].capitalize + "%"))
+          .or(User.where("username LIKE ?", "%" + params[:query].upcase + "%"))
+          .or(User.where("username LIKE ?", "%" + params[:query].downcase + "%"))
+          # .or(User.where("tags LIKE ?", "% " + "%" + params[:query] + "%" + " %"))
+          # .or(User.where("tags LIKE ?", "%" + params[:query] + "%"))
+          # .or(Listing.where("description LIKE ?", "% " + "%" + params[:query] + "%" + " %"))
+          # .or(Listing.where("description LIKE ?", "%" + params[:query] + "%"))
+        render :search_index
+      else
+        @users = User.all
+        render :index
+      end
     end
   
     private

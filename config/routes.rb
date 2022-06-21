@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :posts
     resources :comments, only:[:create, :destroy]
     resources :likes, only:[:create, :destroy]
+    get "/users/search/:query", to: "users#index"
+
   end
 
 

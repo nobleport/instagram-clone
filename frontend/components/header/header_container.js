@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import { logout } from "../../actions/session_actions";
 import { openModal } from "../../actions/modal_actions";
 
-const mSTP = state => ({
-    currentUser: state.session.currentUser
-})
+const mSTP = state => {
+    console.log(state)
+    return{
+        currentUser: state.session.currentUser
+    }
+}
 
 const mDTP = (dispatch)=> ({
     logout: ()=> dispatch(logout()),

@@ -4,6 +4,9 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { BiSmile } from 'react-icons/bi';
 import { AiOutlineEdit } from 'react-icons/ai';
 
+//there is no re-render on LIKES, OR COMMENTS, SOMETIMES???
+//there is a bug, where right after I post on a photo, if I comment, the app breaks
+// heroku doesn't show the edit button on a post
 class PostIndexItem extends React.Component{
     constructor(props) {
         super(props)
@@ -22,7 +25,7 @@ class PostIndexItem extends React.Component{
     componentDidUpdate(prevProps){
         console.log('who am I?')
         if (prevProps.post.commentIds.length != this.props.post.commentIds.length){
-            console.log("am I here?")
+            console.log("am I here?") //I am never making it here, which is what is supposed to rerender the last comment without refreshing the page, if this if statement doesn't happen, line 90 breaks
             this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
         }
     }
@@ -45,7 +48,7 @@ class PostIndexItem extends React.Component{
         if (likeStatus){
             return <button className="filled-heart post-heart" onClick={()=>this.handleDislike(likeId)}><AiFillHeart size={30}/></button>
         }else{
-            return <button className="hollow-heart post-heart" onClick={this.handleLike}><AiOutlineHeart size={30}/></button>
+            return <button className="hollow-heart post-heart" onClick={()=>this.handleLike()}><AiOutlineHeart size={30}/></button>
         }
     }
 
@@ -59,6 +62,7 @@ class PostIndexItem extends React.Component{
 
     handleLike(){
         this.props.createLike(this.state)
+        console.log(this.props.allLikes, 'this is all the likes')
     }
 
     handleDislike(likeId){
@@ -82,7 +86,7 @@ class PostIndexItem extends React.Component{
             let finalCommentId = commentIdArr[commentIdArr.length - 1];
             // let finalComment = this.props.comments[finalCommentId];
             // console.log(finalComment)
-            // return <li className="last-comment">{finalCommentText}</li>
+            // return <li className="last-comment">{finalCommentText}</li> 
             return (
                 <li className="username index-username">
                     <Link className="final-comment-username" to={`/users/${this.state.lastComment.userId}`}>{this.state.lastComment.username}</Link>
@@ -105,6 +109,9 @@ class PostIndexItem extends React.Component{
     }
 
     render(){
+        // if (!this.state.lastComment.userId) {
+        //     return null
+        // }
         return(
             <li className="post-container">
                 <div className="post-header">

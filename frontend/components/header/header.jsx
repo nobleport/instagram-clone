@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import SearchBar from '../search/search_bar_container';
 
 
 class Header extends React.Component {
@@ -46,10 +47,7 @@ class Header extends React.Component {
                 <div className='logo-container'>
                     <Link className="instagram-logo" to="/">Margatsni</Link>
                 </div>
-                <div className="search-container">
-                    <img className="search-icon" src={window.searchIcon} />
-                    <input className="search-bar"placeholder="        Search" type="text" />
-                </div>
+                <SearchBar/>
                 <ul className='header-list'>
                     <li>
                         <Link to="/"><img src={window.homeIcon} /></Link>
