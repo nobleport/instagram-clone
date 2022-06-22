@@ -22,14 +22,13 @@ class PostIndexItem extends React.Component{
         this.toggleEditButton = this.toggleEditButton.bind(this);
     }
 
-    componentDidUpdate(prevProps){
-        console.log('who am I?')
-        // debugger
-        if (prevProps.post.commentIds.length != this.props.post.commentIds.length){
-            console.log("am I here?") //I am never making it here, which is what is supposed to rerender the last comment without refreshing the page, if this if statement doesn't happen, line 90 breaks
-            this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
-        }
-    }
+    // componentDidUpdate(prevProps){
+    //     // debugger
+    //     if (prevProps.post.commentIds.length != this.props.post.commentIds.length){
+    //         console.log("am I here?") //I am never making it here, which is what is supposed to rerender the last comment without refreshing the page, if this if statement doesn't happen, line 90 breaks
+    //         this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
+    //     }
+    // }
 
     componentDidMount(){
         this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
@@ -84,7 +83,17 @@ class PostIndexItem extends React.Component{
     renderFinalComment(){
         if ((this.props.post.commentIds).length > 0){
             let commentIdArr = this.props.post.commentIds;
-            let finalCommentId = commentIdArr[commentIdArr.length - 1];
+            // let finalCommentId = commentIdArr[commentIdArr.length - 1];
+            let finalCommentId;
+            let index = (commentIdArr.length - 1);
+            while (!this.props.comments[commentIdArr[index]]) {
+                index--;
+            }
+            finalCommentId = commentIdArr[index];
+
+
+
+
             // let finalComment = this.props.comments[finalCommentId];
             // console.log(finalComment)
             // return <li className="last-comment">{finalCommentText}</li> 

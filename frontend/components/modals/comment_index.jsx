@@ -42,7 +42,12 @@ class CommentIndex extends React.Component{
         const {post} = this.props;
         let arr = []
         post.commentIds.forEach((id)=>{
-        arr.push((this.props.comments[id]))   
+            if (this.props.comments[id]){
+                arr.push((this.props.comments[id]))
+            } else {
+                return null;
+            }
+          
         })
         return (
         <div className='comment-container-container'>

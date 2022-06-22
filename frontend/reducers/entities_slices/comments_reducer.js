@@ -1,6 +1,6 @@
 import { RECEIVE_COMMENT } from "../../actions/comment_actions";
 import { RECEIVE_POST, RECEIVE_POSTS, REMOVE_POST } from "../../actions/post_actions";
-import { REMOVE_COMMENT_LIKE, RECEIVE_COMMENT_LIKE} from '../../actions/comment_actions'
+import { REMOVE_COMMENT_LIKE, RECEIVE_COMMENT_LIKE, REMOVE_COMMENT} from '../../actions/comment_actions'
 import { RECEIVE_USER } from "../../actions/user_actions";
 const commentsReducer = (oldState={}, action)=>{
     Object.freeze(oldState);
@@ -39,6 +39,9 @@ const commentsReducer = (oldState={}, action)=>{
             console.log(((newState[action.like.comment_id])))
             newState[action.like.comment_id].likeIds.push(action.like.id);
             return newState;
+        case REMOVE_COMMENT:
+            delete newState[action.commentId];
+            return newState
         case RECEIVE_COMMENT:
             return Object.assign(newState, {[action.comment.comment.id]: action.comment.comment})
         default:
