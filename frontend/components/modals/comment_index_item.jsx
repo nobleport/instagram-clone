@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-
+import {TiDelete} from 'react-icons/ti';
 
 class CommentIndexItem extends React.Component {
     constructor(props){
@@ -11,6 +11,7 @@ class CommentIndexItem extends React.Component {
         this.handleLike = this.handleLike.bind(this);
         this.showHeartButton = this.showHeartButton.bind(this);
         this.handleDislike = this.handleDislike.bind(this);
+        this.renderDeleteComment = this.renderDeleteComment.bind(this);
     }
 
     showHeartButton(){
@@ -19,7 +20,6 @@ class CommentIndexItem extends React.Component {
         let likeStatus = false;
         let likeId;
         //how can I get the comment array
-        console.log(this.props.comment)
         this.props.comment.likeIds.forEach((id)=>{
             if (allLikes[id]){
                 if ((allLikes[id]).username === currentUser.username){
@@ -32,6 +32,14 @@ class CommentIndexItem extends React.Component {
             return <button className="filled-heart post-heart comment-heart" onClick={()=>this.handleDislike(likeId)}><AiFillHeart size={16}/></button>
         }else{
             return <button className="hollow-heart post-heart comment-heart" onClick={this.handleLike}><AiOutlineHeart size={16}/></button>
+        }
+    }
+
+    renderDeleteComment() {
+        if (this.props.comment.userId === this.props.currentUser.id) {
+            return <button className='delete-comment-button' onClick={() => this.props.deleteComment(this.props.comment.id)}><TiDelete size={16}/></button>
+        } else {
+            return null;
         }
     }
 
@@ -52,11 +60,12 @@ class CommentIndexItem extends React.Component {
                     <div className="username">{comment.username}<span className="comment-body">{comment.body}</span></div>
                     <div className='comment-like-count'>{comment.likeIds.length} likes</div>
                 </div>
-                <div>
+                
                     <div className="heart-container">
+                        <div>{this.renderDeleteComment()}</div>
                         <div>{this.showHeartButton()}</div>
                     </div>
-                </div>
+                
             </div>
         )
     }

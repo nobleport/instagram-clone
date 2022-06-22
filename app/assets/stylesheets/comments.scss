@@ -24,6 +24,20 @@
     padding-top: 16px;
 }
 
-.comment-heart{
+.comment-heart {
  padding-top: none;
+}
+
+.heart-container {
+    display: flex;
+    align-items: center;
+}
+
+.delete-comment-button {
+    border: none;
+    background-color: #ffffff;
+
+    :hover {
+        cursor: pointer;
+    }
 }

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import CommentIndexItem from './comment_index_item';
 import { createCommentLike } from "../../actions/comment_actions";
-import { deleteCommentLike } from "../../actions/comment_actions";
+import { deleteCommentLike, deleteComment } from "../../actions/comment_actions";
 
 const mSTP = state => {
     return {
@@ -14,7 +14,8 @@ const mSTP = state => {
 const mDTP = dispatch => {
     return {
         createCommentLike: (like)=>dispatch(createCommentLike(like)),
-        deleteCommentLike: (likeId)=>dispatch(deleteCommentLike(likeId))
+        deleteCommentLike: (likeId)=>dispatch(deleteCommentLike(likeId)),
+        deleteComment: (commentId)=>dispatch(deleteComment(commentId))
     }
 }
 
