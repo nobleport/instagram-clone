@@ -25,7 +25,9 @@ const postsReducer = (oldState={}, action) => {
             newState[action.like.post_id].likeIds.push(action.like.id);
             return newState;
         case RECEIVE_COMMENT:
-            newState[action.comment.comment.post_id].commentIds.push(action.comment.comment.id);
+            newState[action.comment.comment.post_id].commentIds = [...newState[action.comment.comment.post_id].commentIds, action.comment.comment.id]
+            // newState[action.comment.comment.post_id].commentIds.push(action.comment.comment.id);
+            return newState;
         case REMOVE_POST:
             delete newState[action.postId];
             return newState;

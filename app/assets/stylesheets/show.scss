@@ -3,8 +3,8 @@
     grid-template-columns: repeat(3, 300px);
     grid-gap: 30px;
     width: 960px;
-    padding-top: 50px;
-    border-top: solid 1px #dedede;
+    padding-top: 1rem;
+    // border-top: solid 1px #dedede;
 
     .show-photo img{
         object-fit: cover;
@@ -26,7 +26,13 @@
 
 .grid-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid #dedede;
+}
+
+.grid-icon {
+    padding-top: 1rem;
 }
 
 
@@ -55,18 +61,18 @@
 
     .show-info-container{
         height: 233px;
-        width: 213px;
-        padding-right: 255px;
+        width: 320px;
+        padding-right: 9rem;
 
         ul li{
-            font-size: 15px;
-            font-weight: 200;
+            font-size: 17px;
+            font-weight: 400;
         }
 
         .show-name {
             display: flex;
             // flex-direction: row;
-            justify-content: center;
+            // justify-content: center;
             width: 100%;
             height: 48px;
             padding-top: 20px;
@@ -74,29 +80,41 @@
             
 
             li:first-of-type{
-                font-size: 20px;
+                font-size: 25px;
                 font-weight: 300;
             }
         }
 
         .show-following{
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+
+            span {
+                font-weight: 300;
+                font-size: 23px;
+            }
         }
     }
 }
-.following-icon{
+.following-icon {
     width: 30px;
 }
 
-.header{
+.header {
     width:min(100%);
     height: min(100%);
 }
 
-.caption-body{
+.caption-body {
     font-size: 12px;
     padding-left: 10px;
     font-weight: 400;
 }
 
+.main-div {
+    height: 100vh;
+}
+
+.profile-page-show {
+    height: 100%;
+}

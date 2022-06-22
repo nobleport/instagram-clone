@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../header/header_container";
+import {MdGridOn} from 'react-icons/md';
 
 class Show extends React.Component {
     constructor(props) {
@@ -29,13 +30,14 @@ class Show extends React.Component {
                                     {/* <li key={2}><img className="following-icon" src={window.following}/></li> */}
                                 </ul>
                                 <ul className="show-following">
-                                    <li key={1}>{(Object.values(this.props.posts)).length} posts</li>
-                                    <li key={2}>{Math.floor(Math.random()*200)} followers</li>
-                                    <li key={3}>{Math.floor(Math.random()*200)} following</li>
+                                    <li key={1}><span>{(Object.values(this.props.posts)).length}</span> posts</li>
+                                    <li key={2}><span>{Math.floor(Math.random()*200)}</span> followers</li>
+                                    <li key={3}><span>{Math.floor(Math.random()*200)}</span> following</li>
                                 </ul>
                             </div>
                         </div>
                         <div className="grid-container">
+                            <MdGridOn className="grid-icon"/>
                             <ul className="show-photos">
                                 {
                                     this.props.posts.map((post,i) =>(

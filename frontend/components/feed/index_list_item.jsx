@@ -24,6 +24,7 @@ class PostIndexItem extends React.Component{
 
     componentDidUpdate(prevProps){
         console.log('who am I?')
+        // debugger
         if (prevProps.post.commentIds.length != this.props.post.commentIds.length){
             console.log("am I here?") //I am never making it here, which is what is supposed to rerender the last comment without refreshing the page, if this if statement doesn't happen, line 90 breaks
             this.setState({lastComment: (this.props.comments[this.props.post.commentIds[this.props.post.commentIds.length - 1]])})
@@ -77,7 +78,7 @@ class PostIndexItem extends React.Component{
         e.preventDefault();
         this.props.createComment(this.state)
         this.setState({body: ''})
-        this.props.fetchPost(this.props.post.id)
+        // this.props.fetchPost(this.props.post.id)
     }
 
     renderFinalComment(){
@@ -91,7 +92,8 @@ class PostIndexItem extends React.Component{
                 <li className="username index-username">
                     <Link className="final-comment-username" to={`/users/${this.state.lastComment.userId}`}>{this.state.lastComment.username}</Link>
                     <span className="index-caption-body">
-                        {this.state.lastComment.body}
+                        {/* {this.state.lastComment.body} */}
+                        {this.props.comments[finalCommentId].body}
                     </span>
                 </li>
             )
@@ -102,7 +104,7 @@ class PostIndexItem extends React.Component{
 
     toggleEditButton(){
         if(this.props.currentUser.id === this.props.post.authorId){
-            return <AiOutlineEdit onClick={()=>this.props.openModal('edit-modal', this.props.post.id)} className="edit-button"/>;
+            return <AiOutlineEdit size={25} onClick={()=>this.props.openModal('edit-modal', this.props.post.id)} className="edit-button"/>;
         }else{
             return null
         }
@@ -112,11 +114,17 @@ class PostIndexItem extends React.Component{
         // if (!this.state.lastComment.userId) {
         //     return null
         // }
+        if (this.props.post.id === 41){
+            console.log(this.props, 'this is the props')
+        }
+        
         return(
             <li className="post-container">
                 <div className="post-header">
-                    <img className="profile-pic-icon" src={window.profileIcon} />
-                    <Link className="username index-username-top" to={`/users/${this.props.post.authorId}`}>{this.props.post.authorName}</Link>
+                    <div className="icon-name">
+                        <img className="profile-pic-icon" src={window.profileIcon} />
+                        <Link className="username index-username-top" to={`/users/${this.props.post.authorId}`}>{this.props.post.authorName}</Link>
+                    </div>
                     {this.toggleEditButton()}
                 </div>
                 <img className="postedpix" src={this.props.post.photoUrl}/>

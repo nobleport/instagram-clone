@@ -90,10 +90,62 @@
         font-size: 20px;
         font-weight: 100;
         color: #8e8e8e;
+
         
     }
     
 }
 
+@media only screen and (max-width: 1158px) {
+    .navbar {
+        width: 100%;
+    }
+}
 
+@media only screen and (max-width: 900px) {
+
+    .logo-container{
+        width: 20%;
+    }
+
+    .search-container {
+
+        padding-right: 5rem;
+        
+    }
+}
+
+@media only screen and (max-width: 666px) {
+
+    .logo-container{
+        width: 20%;
+    }
+
+    .search-container {
+
+        padding-right: 5rem;
+        
+        .search-bar {
+            width: 84%;
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 520px) {
+
+    .logo-container{
+        width: 20%;
+    }
+
+    .search-container {
+
+        padding-right: 0rem;
+        
+        .search-bar {
+            width: 84%;
+        }
+    }
+    
+}
 

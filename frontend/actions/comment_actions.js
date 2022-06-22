@@ -34,7 +34,7 @@ export const deleteCommentLike = (likeId)=>dispatch=>(
         .then((like)=>dispatch(removeCommentLike(like)))
 )
 
-export const createComment = (comment)=>dispatch=>(
+export const createComment = (comment) =>dispatch=>(
     CommentApiUtil.createComment(comment)
         .then((payload)=>dispatch(receiveComment(payload)))
 )
