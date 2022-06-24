@@ -20,6 +20,8 @@ class PostIndexItem extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderFinalComment = this.renderFinalComment.bind(this);
         this.toggleEditButton = this.toggleEditButton.bind(this);
+        this.renderViewPost = this.renderViewPost.bind(this);
+        this.renderLike = this.renderLike.bind(this);
     }
 
     // componentDidUpdate(prevProps){
@@ -99,7 +101,7 @@ class PostIndexItem extends React.Component{
             // return <li className="last-comment">{finalCommentText}</li> 
             return (
                 <li className="username index-username">
-                    <Link className="final-comment-username" to={`/users/${this.state.lastComment.userId}`}>{this.state.lastComment.username}</Link>
+                    <Link className="final-comment-username" to={`/users/${this.props.comments[finalCommentId].userId}`}>{this.props.comments[finalCommentId].username}</Link>
                     <span className="index-caption-body">
                         {/* {this.state.lastComment.body} */}
                         {this.props.comments[finalCommentId].body}
@@ -119,13 +121,32 @@ class PostIndexItem extends React.Component{
         }
     }
 
+    renderViewPost () {
+        if (this.props.post.commentIds.length === 0) {
+            return (<button className="view-comments-link"
+                               onClick={()=>this.props.openModal('show-modal', this.props.post.id)}>View post
+                    </button>)
+        } else {
+            return (
+                <button className="view-comments-link"
+                    onClick={()=>this.props.openModal('show-modal', this.props.post.id)}>View all comments
+                </button>
+            )
+        }
+    }
+
+    renderLike () {
+        if (this.props.post.likeIds.length === 1) {
+            return (<li className="num-likes">{this.props.post.likeIds.length} like</li>)
+        } else {
+            return (<li className="num-likes">{this.props.post.likeIds.length} likes</li>)
+        }
+    }
+
     render(){
         // if (!this.state.lastComment.userId) {
         //     return null
         // }
-        if (this.props.post.id === 41){
-            console.log(this.props, 'this is the props')
-        }
         
         return(
             <li className="post-container">
@@ -142,13 +163,10 @@ class PostIndexItem extends React.Component{
                         <div>{this.showButton()}</div>
                     </div>
                     <ul className="index-caption">
-                        <li className="num-likes">{this.props.post.likeIds.length} likes</li>
-                        
+                        {this.renderLike()}
                         <li className="username index-username"><Link className="username-index-name" to={`/users/${this.props.post.authorId}`}>{this.props.post.authorName}</Link><span className="index-caption-body">{this.props.post.caption}</span></li>
                         <li className="view-comments-link-li">
-                            <button className="view-comments-link"
-                               onClick={()=>this.props.openModal('show-modal', this.props.post.id)}>View all comments
-                            </button>
+                            {this.renderViewPost()}
                         </li>
                         {this.renderFinalComment()}
                         {/* <li className="hours-ago">time since post</li> */}

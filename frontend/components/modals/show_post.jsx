@@ -16,13 +16,6 @@ class ShowPost extends React.Component{
     componentDidMount(){
         this.props.fetchPost(this.props.post.id);
     }
-
-    
- 
-
-   
-    
-
     
 
     render(){

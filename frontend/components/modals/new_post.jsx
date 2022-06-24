@@ -35,7 +35,7 @@ class NewPost extends React.Component{
 
     preview(){
         let ele;
-        (this.state.imageUrl) ? ele = <div className="form-image-container black-background"><img  className="form-image" src={this.state.imageUrl}/><div className="cover-up"></div></div> : ele = <div className="form-image-container form-instruction-container"><div>Drag photos and videos here</div><div className="cover-up"></div></div>
+        (this.state.imageUrl) ? ele = <div className="form-image-container black-background"><img  className="form-image" src={this.state.imageUrl}/><div className="cover-up"></div></div> : ele = <div className="form-image-container form-instruction-container"><div>Drag photos or click here</div><div className="cover-up"></div></div>
         return ele
     }
 

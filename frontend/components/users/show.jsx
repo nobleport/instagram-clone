@@ -5,11 +5,40 @@ import {MdGridOn} from 'react-icons/md';
 class Show extends React.Component {
     constructor(props) {
         super(props)
-        
+        this.renderGrid = this.renderGrid.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchUser(this.props.userId);
+    }
+
+    componentDidUpdate (prevProps) {
+        if (prevProps.userId !== this.props.userId) {
+            this.props.fetchUser(this.props.userId);
+        }
+    }
+
+    renderGrid () {
+        if (this.props.posts.length === 0) {
+            return (
+                <ul className="show-photos-none">
+                    <li className="show-photo no-photos">User has no posts</li>
+                </ul>
+            )
+        } else {
+            return (
+                <ul className="show-photos">
+                    {
+                        this.props.posts.map((post,i) =>(
+                            <li key={i} className="show-photo" onClick={()=>this.props.openModal('show-modal', post.id)}>
+                                <img src={post.photoUrl}/>
+                            </li>
+                        ))
+                    }
+                </ul>
+            )
+                
+        }
     }
 
     render(){
@@ -38,15 +67,7 @@ class Show extends React.Component {
                         </div>
                         <div className="grid-container">
                             <MdGridOn className="grid-icon"/>
-                            <ul className="show-photos">
-                                {
-                                    this.props.posts.map((post,i) =>(
-                                        <li key={i} className="show-photo" onClick={()=>this.props.openModal('show-modal', post.id)}>
-                                            <img src={post.photoUrl}/>
-                                        </li>
-                                    ))
-                                }
-                            </ul>
+                            {this.renderGrid()}
                         </div>
                     </div>
                 </div>

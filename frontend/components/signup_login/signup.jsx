@@ -11,6 +11,7 @@ class SignUp extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.demoLogin = this.demoLogin.bind(this);
+        this.renderLogin = this.renderLogin.bind(this);
     }
 
     handleInput(type){
@@ -42,6 +43,14 @@ class SignUp extends React.Component {
                 .then(()=>this.props.history.push('/'))
     }
 
+    renderLogin() {
+        if (this.state.password.length < 6 || !this.state.username.length > 0) {
+            return <button disabled='disabled' className='login-form-button' onClick={(e)=>this.handleSubmit(e)}>Sign up</button>
+        } else {
+            return <button className='login-button' onClick={(e)=>this.handleSubmit(e)}>Sign up</button>
+        }
+    }
+
     render(){
         return (
             <div className='splash-container'>
@@ -54,7 +63,7 @@ class SignUp extends React.Component {
                     <form className="login-form">
                         <input type="text" value={this.state.username} placeholder='Phone number, email or username' onChange={this.handleInput("username")}/>
                         <input type="password" value={this.state.password} placeholder='Password' onChange={this.handleInput("password")}/>
-                        <button onClick={this.handleSubmit}>Sign Up</button>
+                        {this.renderLogin()}
                     </form>
                     {this.renderErrors()}
                     <p>Already have an account? <Link className="loginbutton" onClick={this.props.resetErrors} to="/login">Log In.</Link></p>

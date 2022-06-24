@@ -59,7 +59,7 @@ class Header extends React.Component {
                     <li className='dropdown-content-container' >
                         <img className='dropbtn' src={window.profileIcon} onClick={this.toggleDropDown}  />
                         <div id="myDropdown" className="dropdown-content" >
-                            <Link className="link-to-profile-dropdown" to={`/users/${this.props.currentUser.id}`}><span>Profile</span></Link>
+                            <Link className="link-to-profile-dropdown" to={`/users/${this.props.currentUser.id}`}><span>My Profile</span></Link>
                             <button className='logout-dropdown-button' onClick={this.signout}>Log Out</button>
                         </div>
                     </li>

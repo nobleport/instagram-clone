@@ -11,6 +11,7 @@ class Login extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.renderLogin = this.renderLogin.bind(this);
     }
 
     handleInput(type){
@@ -41,6 +42,14 @@ class Login extends React.Component {
             password: '123456'})
             .then(()=>this.props.history.push('/'))
     }
+    
+    renderLogin() {
+        if (this.state.password.length < 6 || !this.state.username.length > 0) {
+            return <button disabled='disabled' className='login-form-button' onClick={(e)=>this.handleSubmit(e)}>Log in</button>
+        } else {
+            return <button className='login-button' onClick={(e)=>this.handleSubmit(e)}>Log in</button>
+        }
+    }
         
     render(){
     return (
@@ -53,7 +62,7 @@ class Login extends React.Component {
                 <form className="login-form">
                     <input type="text" value={this.state.username} placeholder='Phone number, email or username' onChange={this.handleInput("username")}/>
                     <input type="password" value={this.state.password} placeholder='Password' onChange={this.handleInput("password")}/>
-                    <button onClick={(e)=>this.handleSubmit(e)}>Log in</button>
+                    {this.renderLogin()}
                 </form>
                 {this.renderErrors()}
                 <p>Don't have an account? <Link className='loginbutton' onClick={this.props.resetErrors}to="/signup">Sign Up</Link></p>
