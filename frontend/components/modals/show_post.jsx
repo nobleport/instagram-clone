@@ -1,6 +1,6 @@
 import React from "react";
 import CommentIndex from "./comment_index_container";
-
+import { AiOutlineEdit } from 'react-icons/ai';
 
 class ShowPost extends React.Component{
     constructor(props){
@@ -9,7 +9,8 @@ class ShowPost extends React.Component{
             body: '',
             comment_id: this.props.post.id,
         }
-        
+        this.toggleEditButton = this.toggleEditButton.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         
     }
 
@@ -17,6 +18,19 @@ class ShowPost extends React.Component{
         this.props.fetchPost(this.props.post.id);
     }
     
+    handleClick() {
+        this.props.closeModal();
+        this.props.openModal('edit-modal', this.props.post.id);
+    }
+
+    toggleEditButton(){
+        if(this.props.currentUser.id === this.props.post.authorId){
+            return <AiOutlineEdit size={25} onClick={this.handleClick} className="edit-button-show"/>;
+        }else{
+            return null
+        }
+    }
+
 
     render(){
         const { post } = this.props;
@@ -30,6 +44,7 @@ class ShowPost extends React.Component{
                     <ul className="comments-header">
                         <li><img src={window.profileIcon}/></li>
                         <li className="username">{post.authorName}<span className="comment-body">{post.caption}</span></li>
+                        <li>{this.toggleEditButton()}</li>
                     </ul>
                     <CommentIndex  post={post}/>
                     {/* <div className="comment-container">

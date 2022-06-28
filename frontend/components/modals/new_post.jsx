@@ -1,5 +1,7 @@
 import React from "react";
 import {createPost} from '../../actions/post_actions';
+import { withRouter } from "react-router-dom";
+
 
 class NewPost extends React.Component{
     constructor(props){
@@ -8,12 +10,11 @@ class NewPost extends React.Component{
             caption: "",
             imageUrl: ""
         }
-        this.handleInput = this.handleInput.bind(this)
-        this.handleFile = this.handleFile.bind(this)
-        this.preview = this.preview.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.generateSubmitButton = this.generateSubmitButton.bind(this)
-        console.log('hello')
+        this.handleInput = this.handleInput.bind(this);
+        this.handleFile = this.handleFile.bind(this);
+        this.preview = this.preview.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.generateSubmitButton = this.generateSubmitButton.bind(this);
     }
 
     handleInput(e){ 
@@ -46,6 +47,7 @@ class NewPost extends React.Component{
         formData.append('post[photo]', this.state.imageFile);
         this.props.createPost(formData);
         this.props.closeModal();
+        this.props.history.push('/')
     }
 
     generateSubmitButton(){
@@ -56,6 +58,7 @@ class NewPost extends React.Component{
         }
     }
 
+    
     
 
     render(){
@@ -92,4 +95,4 @@ class NewPost extends React.Component{
 
 }
 
-export default NewPost;
+export default withRouter(NewPost);

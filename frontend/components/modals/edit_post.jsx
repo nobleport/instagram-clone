@@ -51,9 +51,9 @@ class EditPost extends React.Component{
 
     generateSubmitButton(){
         if (this.state.imageUrl != ''){
-            return <button className="form-share-button" type="submit">Share</button>
+            return <button className="form-share-button" type="submit">Save</button>
         }else{
-            return <button className="disabled-form-share-button" disabled="disabled">Share</button>
+            return <button className="disabled-form-share-button" disabled="disabled">Save</button>
         }
     }
 
@@ -86,7 +86,7 @@ class EditPost extends React.Component{
                                 </label>
                                 {this.generateSubmitButton()}
                             </form>
-                                <button className="delete-post form-share-button" onClick={this.handleDelete}>Delete post</button>
+                                <button className="delete-post form-share-button" onClick={this.handleDelete}>Delete</button>
                         </div>
                     </div>
                 </div>

@@ -53,6 +53,7 @@
     display: flex;
     align-items: center;
     padding-top: 10px;
+    position: relative;
 
     img {
         width: 25px;
@@ -147,4 +148,11 @@
     .comment-smiley{
         padding: 10px;
     }
+}
+
+.edit-button-show {
+    position: absolute;
+    right: 10%;
+    top: 24%;
+    cursor: pointer;
 }

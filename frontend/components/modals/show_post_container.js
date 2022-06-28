@@ -17,6 +17,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => ({
     fetchPost: (postId)=>dispatch(fetchPost(postId)),
     createComment: (comment)=>dispatch(createComment(comment)),
+    openModal: (modal, postId)=>dispatch(openModal(modal, postId)),
+    closeModal: ()=>dispatch(closeModal())
 })
 
 export default connect(mSTP, mDTP)(ShowPost)
