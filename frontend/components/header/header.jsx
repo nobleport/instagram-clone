@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import SearchBar from '../search/search_bar_container';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai'
 
 
 class Header extends React.Component {

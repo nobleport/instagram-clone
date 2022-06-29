@@ -122,10 +122,10 @@
 }
 
 .main-div {
-    height: 100vh;
-    background-color: #fafafa;
+    // height: 100vh;
+    background-color: #fff;
 }
 
 .profile-page-show {
-    height: 100%;
+    min-height: 100vh;
 }

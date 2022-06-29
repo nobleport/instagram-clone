@@ -1,8 +1,8 @@
 .header {
     background: #ffffff;
     display: flex;
-    justify-content: center;
-    
+    justify-content: flex-start;
+    margin-left: 18%;
 }
 
 
@@ -10,8 +10,71 @@
 .suggestions-container {
     position: fixed;
     width: 25%;
-    height: 350px;
-    border: solid black 1px;
+    height: 43%;
+    // border: solid black 1px;
+    margin-left: 42%;
+    margin-top: 7%;
+    border-radius: 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .current-user-link {
+        display: flex;
+        justify-content: space-between;
+
+        .make-blue {
+            color: #0095f6;
+        }
+    }
+
+    .suggestions-for-u {
+        font-size: 15px;
+        color: #8e8e8e;
+        font-weight: 800;
+    }
+
+    .copyright {
+        color: #8e8e8ea4;
+        text-decoration: none;
+        font-size: 11px;
+    }
+
+    .about-me {
+
+       > li {
+            text-align: center;
+            display: flex;
+
+            * {
+                padding-right: 2%;
+                color: #8e8e8ea4;
+                text-decoration: none; 
+            }
+            
+        }
+    }
+
+
+
+    .suggestions-container-list {
+        height: 39%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .suggestion-list-item {
+            display: flex;
+            justify-content: space-between;
+
+            .make-blue {
+                color: #0095f6;
+                font-size: 11px;
+            }
+        }
+
+    }
+
 }
 
 .posts-container {
@@ -171,3 +234,17 @@
         width: 55vw;
     }
 }
+
+@media only screen and (max-width: 1000px) {
+
+    .suggestions-container {
+        display: none;
+    }
+
+    .header {
+        justify-content: center;
+        margin-left: unset;
+    }
+
+}
+

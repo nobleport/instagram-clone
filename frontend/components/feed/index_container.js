@@ -7,6 +7,7 @@ import Index from './index'
 const mSTP = state =>{
     return {
         posts: Object.values(state.entities.posts).reverse(),
+        currentUser: state.session.currentUser
     }
 }
 
